@@ -18,6 +18,9 @@ function handleClick(evt){
 		if (openCardsList.length > 1){
 			if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
 				match();
+			}else{
+				mismatch();
+				setTimeout(hide, 600);
 			}
 		}
 	}
@@ -38,6 +41,19 @@ function match(){
 	openCardsList[0].parentElement.classList = "card match";
 	openCardsList[1].parentElement.classList = "card match";
 	//If crda match remove them from the list - reinitialize the list-
+	openCardsList = [];
+}
+
+// function to change the color of the card if mismatched
+function mismatch(){
+	openCardsList[0].parentElement.classList = "card mismatch";
+	openCardsList[1].parentElement.classList = "card mismatch";
+}
+
+//hide the card's symbol
+function hide(){
+	openCardsList[0].parentElement.classList = "card";
+	openCardsList[1].parentElement.classList = "card";
 	openCardsList = [];
 }
 
