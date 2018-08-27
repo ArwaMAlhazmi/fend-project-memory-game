@@ -11,11 +11,10 @@
  */
 //Handle clicks
 let openCardsList = [];
-let matchedCounter = 0;
-let movesCounter = 0;
 function handleClick(evt){
 	if(evt.target.className === "card"){
 		displaySymbol(evt);
+		addCardToList(evt);
 	}
 } 
 
@@ -23,6 +22,11 @@ function handleClick(evt){
 function displaySymbol(evt){
 	evt.target.classList.add('open', 'show');
 } 
+
+//Add add the card to a *list* of "open" cards
+function addCardToList(evt){
+	openCardsList.push(evt.target.firstElementChild);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
