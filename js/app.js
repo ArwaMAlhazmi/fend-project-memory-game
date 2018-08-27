@@ -12,6 +12,7 @@
 //Handle clicks
 let openCardsList = [];
 let movesCounter = 0;
+let matchedCounter = 0;
 function handleClick(evt){
 	if(evt.target.className === "card"){
 		displaySymbol(evt);
@@ -19,6 +20,11 @@ function handleClick(evt){
 		if (openCardsList.length > 1){
 			if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
 				match();
+				matchedCounter++;
+				if (matchedCounter === 8){
+					console.log ("congrats!");
+					won();
+				}
 			}else{
 				mismatch();
 				setTimeout(hide, 600);
@@ -68,6 +74,11 @@ function movesIncermentor(){
 	}else if(movesCounter === 32){
 		document.querySelectorAll('.fa-star')[1].className = "fa fa-star-o";
 	}
+}
+
+//display a message with the final score
+function won(){
+	document.querySelector('.messege').classList.add('show');
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976

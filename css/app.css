@@ -113,3 +113,34 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the winning messege
+ */
+
+.messege{
+background: #e1e4e6;
+font-weight: bold; 
+color: #3b824a;
+text-align: center;
+position: absolute;
+width: 100%;
+height: 300px;
+transform: translate(-100%, 0);
+}
+
+.messege.show{
+top: 50%;
+left: 50%;
+margin right: -50%;
+transform: translate(-50%, -50%);
+}
+
+button{
+    background-color: #3b824a;
+    font-size: 24px;
+    color: #ffffff;
+    border: 0px;
+    padding: 14px 14px;
+    border-radius: 4px; 
+}
