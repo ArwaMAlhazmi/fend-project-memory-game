@@ -15,6 +15,11 @@ function handleClick(evt){
 	if(evt.target.className === "card"){
 		displaySymbol(evt);
 		addCardToList(evt);
+		if (openCardsList.length > 1){
+			if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
+				match();
+			}
+		}
 	}
 } 
 
@@ -26,6 +31,14 @@ function displaySymbol(evt){
 //Add add the card to a *list* of "open" cards
 function addCardToList(evt){
 	openCardsList.push(evt.target.firstElementChild);
+}
+
+//if the cards do match, lock the cards in the open position
+function match(){
+	openCardsList[0].parentElement.classList = "card match";
+	openCardsList[1].parentElement.classList = "card match";
+	//If crda match remove them from the list - reinitialize the list-
+	openCardsList = [];
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
