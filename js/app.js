@@ -11,6 +11,7 @@
  */
 //Handle clicks
 let openCardsList = [];
+let movesCounter = 0;
 function handleClick(evt){
 	if(evt.target.className === "card"){
 		displaySymbol(evt);
@@ -23,6 +24,7 @@ function handleClick(evt){
 				setTimeout(hide, 600);
 			}
 		}
+		movesIncermentor();
 	}
 } 
 
@@ -55,6 +57,17 @@ function hide(){
 	openCardsList[0].parentElement.classList = "card";
 	openCardsList[1].parentElement.classList = "card";
 	openCardsList = [];
+}
+
+//increment the move counter and display it on the page
+function movesIncermentor(){
+	movesCounter++;
+	document.querySelector('.moves').textContent = movesCounter;
+	if(movesCounter === 24){
+		document.querySelectorAll('.fa-star')[2].className = "fa fa-star-o";
+	}else if(movesCounter === 32){
+		document.querySelectorAll('.fa-star')[1].className = "fa fa-star-o";
+	}
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
