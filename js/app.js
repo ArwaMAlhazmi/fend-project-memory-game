@@ -62,7 +62,7 @@ function handleClick(evt){
 				match();
 				matchedCounter++;
 				if (matchedCounter === 8){
-					setTimeout(won, 400);
+					setTimeout(won, 600);
 				}
 			}else{
 				mismatch();

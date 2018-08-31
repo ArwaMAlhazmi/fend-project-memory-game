@@ -72,8 +72,8 @@ h1 {
     background: #02b3e4;
     cursor: default;
     transform-style: preserve-3d;
-    transition: transform 600ms;
-    -webkit-transition: transform 600ms;
+    transition: transform 600ms, font-size 600ms;
+    -webkit-transition: transform 600ms, font-size 600ms;
     }
 
 .deck .card.show {
