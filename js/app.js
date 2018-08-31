@@ -55,21 +55,23 @@ let movesCounter = 0;
 let matchedCounter = 0;
 function handleClick(evt){
 	if(evt.target.className === "card"){
-		displaySymbol(evt);
-		addCardToList(evt);
-		if (openCardsList.length > 1){
-			if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
-				match();
-				matchedCounter++;
-				if (matchedCounter === 8){
-					setTimeout(won, 600);
+		if(openCardsList.length < 2){
+			displaySymbol(evt);
+			addCardToList(evt);
+			if (openCardsList.length > 1){
+				if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
+					match();
+					matchedCounter++;
+					if (matchedCounter === 8){
+						setTimeout(won, 600);
+					}
+				}else{
+					mismatch();
+					setTimeout(hide, 600);
 				}
-			}else{
-				mismatch();
-				setTimeout(hide, 600);
 			}
+			movesIncermentor();
 		}
-		movesIncermentor();
 	}
 } 
 
