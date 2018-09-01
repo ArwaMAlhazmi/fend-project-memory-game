@@ -100,7 +100,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 500px;
+    width: 345px;
     margin-bottom: 10px;
 }
 
@@ -156,4 +156,29 @@ button{
     padding: 14px 14px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/* 
+Responsiveness
+*/
+@media (min-width: 361px){
+    .deck .card.show {
+        font-size: 50px;
+    }
+
+    .score-panel{
+        width: 450px;
+        font-size: 35px;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .messege {
+        height: 500px;
+    }
+    .messege p{
+        font-size: 35px;
+    }
 }
