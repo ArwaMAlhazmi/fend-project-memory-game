@@ -46,6 +46,7 @@ function restartGame(){
 	if(document.querySelector('.messege').classList.contains('show')){
 		document.querySelector('.messege').classList.remove('show');
 	}
+	stopTimer();
 }
 
 
@@ -53,7 +54,13 @@ function restartGame(){
 let openCardsList = [];
 let movesCounter = 0;
 let matchedCounter = 0;
+let time = 0;
+let isOn = false;
+let intervalID;
 function handleClick(evt){
+	if(!isOn){
+		timer();
+	}
 	if(evt.target.className === "card"){
 		if(openCardsList.length < 2){
 			displaySymbol(evt);
@@ -61,16 +68,17 @@ function handleClick(evt){
 			if (openCardsList.length > 1){
 				if (openCardsList[0].classList[1] === openCardsList[1].classList[1]){
 					match();
+					movesIncermentor();
 					matchedCounter++;
 					if (matchedCounter === 8){
-						setTimeout(won, 600);
+						setTimeout(won, 400);
 					}
 				}else{
 					mismatch();
+					movesIncermentor();
 					setTimeout(hide, 600);
 				}
 			}
-			movesIncermentor();
 		}
 	}
 } 
@@ -111,16 +119,38 @@ function hide(){
 function movesIncermentor(){
 	movesCounter++;
 	document.querySelector('.moves').textContent = movesCounter;
-	if(movesCounter === 24){
+	if(movesCounter === 16){
 		document.querySelectorAll('.fa-star')[2].className = "fa fa-star-o";
-	}else if(movesCounter === 32){
+	}else if(movesCounter === 24){
 		document.querySelectorAll('.fa-star')[1].className = "fa fa-star-o";
 	}
+}
+
+//starting timer
+function timer(){
+	isOn = true;
+	intervalID = setInterval(function(){
+		time++;
+		document.querySelector('.timer').innerHTML= Math.floor(time/60) + ":" + time % 60;
+	}, 1000);
+}
+
+//stoping the timer
+function stopTimer(){
+	isOn = false;
+	clearInterval(intervalID);
+	document.querySelector('.timer').innerHTML= "0" + ":" + "0";
+	time = 0;
 }
 
 //display a message with the final score
 function won(){
 	document.querySelector('.messege').classList.add('show');
+	document.querySelector('.result-time').innerHTML = "Time:  "+ Math.floor(time/60) + ":" + time % 60;
+	const stars = document.querySelectorAll('.fa-star');
+	document.querySelector('.result-stars').innerHTML = "Stars:  "+ stars.length;
+	document.querySelector('.result-moves').innerHTML = "moves:  " + movesCounter;
+	stopTimer();
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
