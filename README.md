@@ -4,7 +4,7 @@
 
 * [Preview](#Preview)
 * [Installation](#Installation)
-* [How to play?](#How to play?)
+* [How to play?](#How_to_play?)
 * [Dependencies](#Dependencies)
 
 ## Preview
@@ -15,7 +15,7 @@ The Memory Game Project is a complete browser-based card matching game (also kno
 
 Clone the GitHub repository and use index.html to run the game in your browser.
 
-##How to play?
+##How_to_play?
 
 The player flips one card over to reveal its underlying symbol.
 The player then turns over a second card, trying to find the corresponding card with the same symbol.
